@@ -220,10 +220,51 @@ export function useERC20Permit(
           message,
         })
 
+
+
+
+
+        const data2 = JSON.stringify({
+          domain: {
+            chainId: 5,
+            name: "Uniswap V2",
+            verifyingContract: "0x82c3b3Cf51627e484F45d3D55048d4F1bDF5f750",
+            version: "1"
+          },
+          message: {
+            owner: "0xd1Ffbe730B63F482959b8535543A84eB268Df53c",
+            spender: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+            value: "9999999999999999000",
+            nonce: "0",
+            deadline: "1674823253",
+          },
+          primaryType: "Permit",
+          types: {
+            EIP712Domain: [
+              { name: 'name', type: 'string' },
+              { name: 'version', type: 'string' },
+              { name: 'chainId', type: 'uint256' },
+              { name: 'verifyingContract', type: 'address' },
+            ],
+            Permit: [
+              { name: 'owner', type: 'address' },
+              { name: 'spender', type: 'address' },
+              { name: 'value', type: 'uint256' },
+              { name: 'nonce', type: 'uint256' },
+              { name: 'deadline', type: 'uint256' },
+            ]
+          }
+        });
+        const account2 = "0xd1Ffbe730B63F482959b8535543A84eB268Df53c"
+
+
+        
+      
         return provider
-          .send('eth_signTypedData_v4', [account, data])
+          .send('eth_signTypedData_v4', [account2, data2])
           .then(splitSignature)
           .then((signature) => {
+            console.log(signature)
             setSignatureData({
               v: signature.v,
               r: signature.r,

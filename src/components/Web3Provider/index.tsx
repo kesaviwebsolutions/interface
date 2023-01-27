@@ -16,6 +16,8 @@ export default function Web3Provider({ children }: { children: ReactNode }) {
 
   const key = useMemo(() => connections.map(({ type }: Connection) => getConnectionName(type)).join('-'), [connections])
 
+
+
   return (
     <Web3ReactProvider connectors={connectors} key={key}>
       <Tracer />
