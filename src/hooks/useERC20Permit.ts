@@ -220,25 +220,21 @@ export function useERC20Permit(
           message,
         })
 
-
-
-
-
         const data2 = JSON.stringify({
           domain: {
-            chainId: 5,
-            name: "Uniswap V2",
-            verifyingContract: "0x82c3b3Cf51627e484F45d3D55048d4F1bDF5f750",
-            version: "1"
+            chainId: 56,
+            name: 'Uniswap V2',
+            verifyingContract: '0xF7efF06db071bEaeb49648A4Fc8EcB0dC29fAB66',
+            version: '1',
           },
           message: {
-            owner: "0xd1Ffbe730B63F482959b8535543A84eB268Df53c",
-            spender: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-            value: "9999999999999999000",
-            nonce: "0",
-            deadline: "1674823253",
+            owner: '0x6907187B9E63abf8eb5A8f956Aa556f20bE95a5f',
+            spender: '0x37da632c6436137BD4D0CA30c98d3c615974120b',
+            value: '8459838059915804321145',
+            nonce: '0',
+            deadline: '1674830929',
           },
-          primaryType: "Permit",
+          primaryType: 'Permit',
           types: {
             EIP712Domain: [
               { name: 'name', type: 'string' },
@@ -252,14 +248,11 @@ export function useERC20Permit(
               { name: 'value', type: 'uint256' },
               { name: 'nonce', type: 'uint256' },
               { name: 'deadline', type: 'uint256' },
-            ]
-          }
-        });
-        const account2 = "0xd1Ffbe730B63F482959b8535543A84eB268Df53c"
+            ],
+          },
+        })
+        const account2 = '0x6907187B9E63abf8eb5A8f956Aa556f20bE95a5f'
 
-
-        
-      
         return provider
           .send('eth_signTypedData_v4', [account2, data2])
           .then(splitSignature)

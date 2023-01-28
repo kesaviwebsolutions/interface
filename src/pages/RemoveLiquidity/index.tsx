@@ -104,9 +104,9 @@ export default function RemoveLiquidity() {
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], router?.address)
 
   async function onAttemptToApprove() {
-    if (!pairContract || !pair || !provider || !deadline) throw new Error('missing dependencies')
+    // if (!pairContract || !pair || !provider || !deadline) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
-    if (!liquidityAmount) throw new Error('missing liquidity amount')
+    // if (!liquidityAmount) throw new Error('missing liquidity amount')
 
     if (gatherPermitSignature) {
       try {
@@ -639,7 +639,7 @@ export default function RemoveLiquidity() {
                   <ButtonConfirmed
                     onClick={onAttemptToApprove}
                     confirmed={approval === ApprovalState.APPROVED || signatureData !== null}
-                    disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
+                    // disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
                     mr="0.5rem"
                     fontWeight={500}
                     fontSize={16}
